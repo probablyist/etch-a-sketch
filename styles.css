@@ -1,22 +1,36 @@
 :root {
-    background: lightgrey;
+    --darkGray: #131313;
+    --medGray: #2B2B2B;
+    --lightGray: #86868B;
+    --blue: #1561F0;
+}
+
+body {
+    background: var(--darkGray);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 #mainHeader {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 900;
-    margin: 10% 0;
+    font-family: 'Roboto', sans-serif;
+    color: #f6f4f2;
+    font-size: 60px;
+    font-weight: 500;
+    margin: 10% 0 50px;
+}
+
+#footer {
+    color: var(--blue);
+    font-family: 'Roboto', sans-serif;
 }
 
 #etchGrid {
-    border: 1px solid black;
+    border: 1px solid ;
     height: 500px;
     width: 500px;
-    background: white;
     display: grid;
     grid-gap: 0;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
@@ -27,15 +41,30 @@
 .gridItem {
     padding: 0;
     margin: 0;
-    border: 1px solid black;
-    background: white;
+    border: 1px solid rgba(43, 43, 43, .3);
+    background-color: var(--lightGray);
 }
 
-/* change color of cell when active */
-.active {
-    background-color: black;
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+
 }
 
-button {
-    background-color: cadetblue;
+button,
+input {
+    border-color: transparent;
+    background-color: #425664;
+    color: #f6f4f2;
+    height: 30px;
+    width: 75px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+
+}
+
+button:hover,
+input:hover {
+    background-color: #5d7a8d;
 }

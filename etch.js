@@ -5,6 +5,7 @@ const smallButton = document.getElementById('smallBtn');
 const mediumButton = document.getElementById('mediumBtn');
 const largeButton = document.getElementById('largeBtn');
 const colorButton = document.getElementById('colorBtn');
+const eraserButton = document.getElementById('eraserBtn');
 let colorInput = document.querySelector('#color');
 let paintColor = '#000000';
 
@@ -40,7 +41,7 @@ function removeActive() {
     let cell = etchGrid.querySelectorAll('.gridItem');
     for(i = 0; i < cell.length; i++) {
         // cell[i].classList.remove('active');
-        cell[i].style.backgroundColor = '#FFFFFF'
+        cell[i].style.backgroundColor = '#86868B'
     }
 };
 
@@ -63,7 +64,6 @@ largeButton.addEventListener('click', () => {
     startPainting();
 });
 
-
 //remove all grid cells
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
@@ -71,6 +71,13 @@ function removeAllChildNodes(parent) {
     }
 }
 
+//Select color for paintbrush
 colorInput.addEventListener('input', () => {
     paintColor = colorInput.value;
+});
+
+//Set color to background color
+eraserButton.addEventListener('click', () => {
+    paintColor = '#86868B';
+    colorInput.value = '#86868B';
 });
