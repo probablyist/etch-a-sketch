@@ -1,5 +1,12 @@
 
 const etchGrid = document.getElementById('etchGrid');
+const clearButton = document.getElementById('clearBtn');
+const smallButton = document.getElementById('smallBtn');
+const mediumButton = document.getElementById('mediumBtn');
+const largeButton = document.getElementById('largeBtn');
+
+window.onload = makeRows(16, 16);
+window.onload = startPainting();
 
 //generate grid of divs, assign class and id to each
 function makeRows(rows, cols) {
@@ -8,25 +15,21 @@ function makeRows(rows, cols) {
     for (c = 0; c < (rows * cols); c++) {
         let cell = document.createElement('div');
         etchGrid.appendChild(cell).className = 'gridItem';
-        // etchGrid.appendChild(cell).id = "cell"; //+ c to number
     };
 };
 
-makeRows(16, 16);
-
-
 //add hover effect coloring grid cells
-const target = etchGrid.querySelectorAll('.gridItem');
+function startPainting() {
+    const target = etchGrid.querySelectorAll('.gridItem');
 
-target.forEach(gridItem => {
-    gridItem.addEventListener('mouseover', function activeCell(event) {
-        gridItem.classList.add("active");
+    target.forEach(gridItem => {
+        gridItem.addEventListener('mouseover', function activeCell() {
+            gridItem.classList.add("active");
+        });
     });
-});
+}
 
 //button to remove coloring from cells
-const clearButton = document.getElementById('clearBtn');
-
 clearButton.addEventListener('click', removeActive);
 
 function removeActive() {
@@ -35,3 +38,31 @@ function removeActive() {
         cell[i].classList.remove('active');
     }
 };
+
+//buttons to change size of grid
+smallButton.addEventListener('click', () => {
+    removeAllChildNodes(etchGrid);
+    makeRows(8, 8);
+    startPainting();
+});
+
+mediumButton.addEventListener('click', () => {
+    removeAllChildNodes(etchGrid);
+    makeRows(16, 16);
+    startPainting();
+});
+
+largeButton.addEventListener('click', () => {
+    removeAllChildNodes(etchGrid);
+    makeRows(32, 32);
+    startPainting();
+});
+
+
+//remove all grid cells
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
