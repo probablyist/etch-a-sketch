@@ -5,6 +5,8 @@ const smallButton = document.getElementById('smallBtn');
 const mediumButton = document.getElementById('mediumBtn');
 const largeButton = document.getElementById('largeBtn');
 const colorButton = document.getElementById('colorBtn');
+let colorInput = document.querySelector('#color');
+let paintColor = '#000000';
 
 window.onload = makeRows(16, 16);
 window.onload = startPainting();
@@ -25,7 +27,8 @@ function startPainting() {
 
     target.forEach(gridItem => {
         gridItem.addEventListener('mouseover', function activeCell() {
-            gridItem.classList.add('active');
+            // gridItem.classList.add('active');
+            gridItem.style.backgroundColor = paintColor;
         });
     });
 }
@@ -36,7 +39,8 @@ clearButton.addEventListener('click', removeActive);
 function removeActive() {
     let cell = etchGrid.querySelectorAll('.gridItem');
     for(i = 0; i < cell.length; i++) {
-        cell[i].classList.remove('active');
+        // cell[i].classList.remove('active');
+        cell[i].style.backgroundColor = '#FFFFFF'
     }
 };
 
@@ -66,3 +70,7 @@ function removeAllChildNodes(parent) {
         parent.removeChild(parent.firstChild);
     }
 }
+
+colorInput.addEventListener('input', () => {
+    paintColor = colorInput.value;
+});

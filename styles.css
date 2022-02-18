@@ -33,5 +33,9 @@
 
 /* change color of cell when active */
 .active {
-    background: black;
+    background-color: black;
+}
+
+button {
+    background-color: cadetblue;
 }
