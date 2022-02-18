@@ -4,6 +4,7 @@ const clearButton = document.getElementById('clearBtn');
 const smallButton = document.getElementById('smallBtn');
 const mediumButton = document.getElementById('mediumBtn');
 const largeButton = document.getElementById('largeBtn');
+const colorButton = document.getElementById('colorBtn');
 
 window.onload = makeRows(16, 16);
 window.onload = startPainting();
@@ -24,7 +25,7 @@ function startPainting() {
 
     target.forEach(gridItem => {
         gridItem.addEventListener('mouseover', function activeCell() {
-            gridItem.classList.add("active");
+            gridItem.classList.add('active');
         });
     });
 }
@@ -65,4 +66,3 @@ function removeAllChildNodes(parent) {
         parent.removeChild(parent.firstChild);
     }
 }
-
